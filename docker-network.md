@@ -45,14 +45,7 @@ docker compose down  # Stop existing services
 docker compose up -d  # Start with new network
 ```
 
-### Step 4: Run mcp-crawl4ai-rag with Network
-
-```bash
-cd /mnt/d/dev/my-github/mcp-crawl4ai-rag
-docker run --network mcp-network --env-file .env -p 8051:8051 mcp/crawl4ai-rag
-```
-
-### Step 5: Update Environment Variables
+### Step 4: Update Environment Variables
 
 In your mcp-crawl4ai-rag `.env` file, use container names instead of localhost:
 
@@ -71,6 +64,13 @@ OPENAI_API_KEY=your_openai_key
 MODEL_CHOICE=gpt-4-turbo
 USE_KNOWLEDGE_GRAPH=true
 # ... etc
+```
+
+### Step 5: Run mcp-crawl4ai-rag with Network
+
+```bash
+cd /mnt/d/dev/my-github/mcp-crawl4ai-rag
+docker run --network mcp-network --env-file .env -p 8051:8051 mcp/crawl4ai-rag
 ```
 
 ## Solution 2: Docker Compose Integration
