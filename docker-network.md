@@ -75,7 +75,15 @@ docker run --network mcp-network --env-file .env -p 8051:8051 mcp/crawl4ai-rag
 
 ## Solution 2: Docker Compose Integration
 
+This solution builds upon Solution 1 by using Docker Compose instead of `docker run`. You must complete **Steps 1-3 from Solution 1** first (create network, update mcp-database configuration, and start services).
+
 Since the mcp-crawl4ai-rag project doesn't have a `docker-compose.yml` file, we need to create one that defines the service and connects it to the shared network.
+
+### Prerequisites
+- Complete Steps 1-3 from Solution 1 (mcp-network must exist)
+- mcp-database services must be running
+
+### Create Docker Compose File
 
 Create a docker-compose file in the mcp-crawl4ai-rag directory:
 
