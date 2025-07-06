@@ -1,0 +1,28 @@
+include:
+  - ./supabase/docker/docker-compose.yml
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+  neo4j_conf:
+  neo4j_plugins:
+
+services:
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4j
+    restart: unless-stopped
+    ports:
+      - "7473:7473"
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_logs:/logs
+      - neo4j_conf:/conf
+      - neo4j_data:/data
+      - neo4j_plugins:/plugins
+    environment:
+      - NEO4J_AUTH=${NEO4J_AUTH:-neo4j/password}
+      - NEO4J_PLUGINS=["graph-data-science"]
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*
+      - NEO4J_dbms_security_procedures_allowlist=gds.*
