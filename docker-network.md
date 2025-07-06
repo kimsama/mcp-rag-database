@@ -75,10 +75,12 @@ docker run --network mcp-network --env-file .env -p 8051:8051 mcp/crawl4ai-rag
 
 ## Solution 2: Docker Compose Integration
 
-Create a docker-compose override in the mcp-crawl4ai-rag directory:
+Since the mcp-crawl4ai-rag project doesn't have a `docker-compose.yml` file, we need to create one that defines the service and connects it to the shared network.
+
+Create a docker-compose file in the mcp-crawl4ai-rag directory:
 
 ```yaml
-# Create: /mnt/d/dev/my-github/mcp-crawl4ai-rag/docker-compose.override.yml
+# Create: /mnt/d/dev/my-github/mcp-crawl4ai-rag/docker-compose.yml
 services:
   crawl4ai-mcp:
     build: .
